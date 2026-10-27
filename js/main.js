@@ -1,7 +1,7 @@
 /* ---------- Site config: edit brand/contact details here ---------- */
 const SITE = {
   phone: '+20 100 000 0000',
-  whatsapp: '201000000000',
+  whatsapp: '201093962597',
   email: 'info@example.com',
 };
 
