@@ -1,8 +1,8 @@
 /* ---------- Site config: edit brand/contact details here ---------- */
 const SITE = {
-  phone: '+201093962597',
-  whatsapp: '+201093962597',
-  email: 'info@example.com',
+  phone: '+201003368309 or +201110008627',
+  whatsapp: '+201003368309',
+  email: 'emad_fathy3@yahoo.com',
 };
 
 /* ---------- Translations ---------- */
@@ -40,7 +40,7 @@ const I18N = {
     'cta.text': 'Tell us what you need and we will reply with availability and pricing.',
     'contact.eyebrow': 'Contact', 'contact.title': 'Send us your inquiry',
     'contact.text': 'Share the product, quantity and destination port and we will get back to you quickly.',
-    'contact.phone': 'Phone', 'contact.email': 'Email', 'contact.location': 'Location', 'contact.loc.v': 'Cairo, Egypt',
+    'contact.phone': 'Phone', 'contact.email': 'Email', 'contact.location': 'Location', 'contact.loc.v': 'Elmadina Building, 6th of October city, Cairo, Egypt',
     'form.name': 'Your name', 'form.email': 'Email', 'form.company': 'Company', 'form.phone': 'Phone / WhatsApp',
     'form.msg': 'Products, quantities and destination', 'form.send': 'Send via WhatsApp',
     'form.note': 'Opening WhatsApp…',
@@ -83,7 +83,7 @@ const I18N = {
     'cta.text': 'أخبرنا بما تحتاجه وسنرد عليك بالتوافر والأسعار.',
     'contact.eyebrow': 'تواصل معنا', 'contact.title': 'أرسل لنا استفسارك',
     'contact.text': 'اكتب المنتج والكمية وميناء الوصول وسنرد عليك سريعًا.',
-    'contact.phone': 'الهاتف', 'contact.email': 'البريد الإلكتروني', 'contact.location': 'الموقع', 'contact.loc.v': 'القاهرة، مصر',
+    'contact.phone': 'الهاتف', 'contact.email': 'البريد الإلكتروني', 'contact.location': 'الموقع', 'contact.loc.v': 'مبنى المدينة، مدينة السادس من أكتوبر، القاهرة، مصر',
     'form.name': 'الاسم', 'form.email': 'البريد الإلكتروني', 'form.company': 'الشركة', 'form.phone': 'الهاتف / واتساب',
     'form.msg': 'المنتجات والكميات ووجهة الشحن', 'form.send': 'إرسال عبر واتساب',
     'form.note': 'جاري فتح واتساب…',
