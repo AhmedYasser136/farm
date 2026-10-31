@@ -215,7 +215,7 @@ h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); margin-bottom: 14px; }
   background: rgba(255, 255, 255, .9); display: grid; place-items: center; opacity: 0; transition: opacity .2s;
 }
 .p-item:hover::after { opacity: 1; }
-.more-wrap { text-align: center; padding: 20px 0 30px; }
+.p-sentinel { height: 30px; }
 
 .lightbox {
   position: fixed; inset: 0; z-index: 100; background: rgba(8, 20, 13, .94); display: none;

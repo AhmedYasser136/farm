@@ -49,7 +49,7 @@ const I18N = {
     'footer.links': 'Quick links', 'footer.cats': 'Categories',
     'footer.rights': 'All rights reserved.',
     'p.title': 'Our products', 'p.text': 'Browse our range by category. Click any photo to enlarge it.',
-    'p.loadmore': 'Show more', 'lb.of': 'of',
+    'lb.of': 'of',
   },
   ar: {
     'brand': 'حصاد النيل',
@@ -93,7 +93,7 @@ const I18N = {
     'footer.links': 'روابط سريعة', 'footer.cats': 'الأقسام',
     'footer.rights': 'جميع الحقوق محفوظة.',
     'p.title': 'منتجاتنا', 'p.text': 'تصفح منتجاتنا حسب القسم. اضغط على أي صورة لتكبيرها.',
-    'p.loadmore': 'عرض المزيد', 'lb.of': 'من',
+    'lb.of': 'من',
   },
 };
 
@@ -115,7 +115,7 @@ function applyLang() {
     el.replaceChildren(...SITE.phones.flatMap((p, i) => {
       const a = document.createElement('a');
       a.textContent = p; a.href = 'tel:' + p;
-      return i ? [' / ', a] : [a];
+      return i ? [document.createElement('br'), a] : [a];
     }));
   });
   document.querySelectorAll('[data-email]').forEach((el) => { el.textContent = SITE.email; el.href = 'mailto:' + SITE.email; });
@@ -269,10 +269,10 @@ function initProducts() {
     sec.className = 'cat-section container';
     sec.id = key;
     sec.innerHTML = `<div class="cat-section-head"><h2 data-i18n="cat.${key}"></h2><p data-i18n="cat.${key}.d"></p></div>
-      <div class="p-grid"></div><div class="more-wrap"><button class="btn btn-dark" data-i18n="p.loadmore"></button></div>`;
+      <div class="p-grid"></div><div class="p-sentinel"></div>`;
     root.appendChild(sec);
-    sec.querySelector('.more-wrap button').addEventListener('click', () => renderMore(key));
     renderMore(key);
+    watchMore(key, sec.querySelector('.p-sentinel'));
   });
 
   function renderMore(key) {
@@ -289,8 +289,24 @@ function initProducts() {
       grid.appendChild(d);
     }
     state[key] = end;
-    sec.querySelector('.more-wrap').style.display = end >= items.length ? 'none' : '';
     applyLang();
+  }
+
+  // Infinite scroll: load the next batch when the end of a section nears the viewport
+  function watchMore(key, sentinel) {
+    const total = window.PRODUCTS[key].length;
+    if (!('IntersectionObserver' in window)) {
+      while (state[key] < total) renderMore(key);
+      sentinel.remove();
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      renderMore(key);
+      if (state[key] >= total) { io.disconnect(); sentinel.remove(); return; }
+      io.unobserve(sentinel); io.observe(sentinel); // re-check in case it is still in view
+    }, { rootMargin: '800px 0px' });
+    io.observe(sentinel);
   }
 
   function setActive(key, scroll = true) {
