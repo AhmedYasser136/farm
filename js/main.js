@@ -8,7 +8,7 @@ const SITE = {
 /* ---------- Translations ---------- */
 const I18N = {
   en: {
-    'brand': 'Nile Harvest',
+    'brand': 'Twins for Agribusiness trading Hub',
     'nav.home': 'Home', 'nav.about': 'About', 'nav.products': 'Products', 'nav.contact': 'Contact',
     'lang.switch': 'العربية',
     'hero.eyebrow': 'Egyptian fresh & frozen produce',
@@ -52,7 +52,7 @@ const I18N = {
     'lb.of': 'of',
   },
   ar: {
-    'brand': 'حصاد النيل',
+    'brand': 'Twins for Agribusiness trading Hub',
     'nav.home': 'الرئيسية', 'nav.about': 'من نحن', 'nav.products': 'المنتجات', 'nav.contact': 'تواصل معنا',
     'lang.switch': 'English',
     'hero.eyebrow': 'محاصيل مصرية طازجة ومجمدة',

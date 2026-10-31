@@ -109,7 +109,7 @@ h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); margin-bottom: 14px; }
 .slide.on img { animation: zoom 7s ease-out forwards; }
 @keyframes zoom { from { transform: scale(1); } to { transform: scale(1.07); } }
 .slider-badge {
-  position: absolute; top: 22px; inset-inline-start: -14px; background: var(--orange); color: #fff;
+  position: absolute; top: 22px; inset-inline-start: 18px; background: var(--orange); color: #fff;
   padding: 14px 20px; border-radius: 16px; font-weight: 700; box-shadow: var(--shadow); z-index: 2;
 }
 .slider-controls { display: flex; justify-content: center; gap: 12px; margin-top: 34px; }
