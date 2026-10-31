@@ -1,6 +1,6 @@
 /* ---------- Site config: edit brand/contact details here ---------- */
 const SITE = {
-  phone: '+201003368309 or +201110008627',
+  phones: ['+201003368309', '+201110008627'],
   whatsapp: '+201003368309',
   email: 'emad_fathy3@yahoo.com',
 };
@@ -25,11 +25,12 @@ const I18N = {
     'about.l3': 'Lab-checked sugar levels (Brix) and quality inspection',
     'about.l4': 'Flexible packaging and labelling for each market',
     'cat.eyebrow': 'Our produce', 'cat.title': 'Product categories',
-    'cat.text': 'Three main ranges, each available in the packing that suits your market.',
-    'cat.fruits': 'Fruits', 'cat.vegetables': 'Vegetables', 'cat.frozen': 'Frozen',
+    'cat.text': 'Four main ranges, each available in the packing that suits your market.',
+    'cat.fruits': 'Fruits', 'cat.vegetables': 'Vegetables', 'cat.frozen': 'Frozen', 'cat.grains': 'Grains',
     'cat.fruits.d': 'Citrus, mango, grapes, strawberries and more.',
     'cat.vegetables.d': 'Peppers, tomatoes, garlic, potatoes, cabbage and more.',
     'cat.frozen.d': 'IQF fruits and vegetables, ready for processing.',
+    'cat.grains.d': 'Peanuts, beans, corn and other grains.',
     'cat.view': 'View products', 'cat.items': 'photos', 'cat.all': 'All',
     'why.eyebrow': 'Why choose us', 'why.title': 'What you can count on',
     'why.1': 'Superior quality', 'why.1d': 'Strict grading and inspection before every shipment.',
@@ -68,11 +69,12 @@ const I18N = {
     'about.l3': 'فحص معملي لنسبة السكر (Brix) ومراقبة الجودة',
     'about.l4': 'تعبئة وتغليف مرنة تناسب كل سوق',
     'cat.eyebrow': 'منتجاتنا', 'cat.title': 'أقسام المنتجات',
-    'cat.text': 'ثلاثة أقسام رئيسية، وكل منها متاح بالتعبئة المناسبة لسوقك.',
-    'cat.fruits': 'الفاكهة', 'cat.vegetables': 'الخضروات', 'cat.frozen': 'المجمدات',
+    'cat.text': 'أربعة أقسام رئيسية، وكل منها متاح بالتعبئة المناسبة لسوقك.',
+    'cat.fruits': 'الفاكهة', 'cat.vegetables': 'الخضروات', 'cat.frozen': 'المجمدات', 'cat.grains': 'الحبوب',
     'cat.fruits.d': 'الحمضيات والمانجو والعنب والفراولة وغيرها.',
     'cat.vegetables.d': 'الفلفل والطماطم والثوم والبطاطس والكرنب وغيرها.',
     'cat.frozen.d': 'فاكهة وخضروات IQF جاهزة للتصنيع.',
+    'cat.grains.d': 'الفول السوداني والفاصوليا والذرة وغيرها من الحبوب.',
     'cat.view': 'عرض المنتجات', 'cat.items': 'صورة', 'cat.all': 'الكل',
     'why.eyebrow': 'لماذا نحن', 'why.title': 'ما يمكنك الاعتماد عليه',
     'why.1': 'جودة عالية', 'why.1d': 'فرز وفحص دقيق قبل كل شحنة.',
@@ -109,7 +111,13 @@ function applyLang() {
   document.querySelectorAll('[data-i18n-html]').forEach((el) => { el.innerHTML = t(el.dataset.i18nHtml); });
   document.querySelectorAll('[data-i18n-ph]').forEach((el) => { el.placeholder = t(el.dataset.i18nPh); });
   document.title = t('brand') + ' — ' + t(document.body.dataset.title || 'nav.home');
-  document.querySelectorAll('[data-phone]').forEach((el) => { el.textContent = SITE.phone; el.href = 'tel:' + SITE.phone.replace(/\s/g, ''); });
+  document.querySelectorAll('[data-phone]').forEach((el) => {
+    el.replaceChildren(...SITE.phones.flatMap((p, i) => {
+      const a = document.createElement('a');
+      a.textContent = p; a.href = 'tel:' + p;
+      return i ? [' / ', a] : [a];
+    }));
+  });
   document.querySelectorAll('[data-email]').forEach((el) => { el.textContent = SITE.email; el.href = 'mailto:' + SITE.email; });
   document.dispatchEvent(new CustomEvent('langchange'));
 }
@@ -237,7 +245,7 @@ function initProducts() {
   if (!root) return;
   const PAGE = 24;
   const state = {};
-  const order = ['fruits', 'vegetables', 'frozen'];
+  const order = ['fruits', 'vegetables', 'frozen', 'grains'];
   let active = 'all';
   let lbList = [];
   let lbIndex = 0;
