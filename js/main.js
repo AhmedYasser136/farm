@@ -52,7 +52,7 @@ const I18N = {
     'lb.of': 'of',
   },
   ar: {
-    'brand': 'Twins for Agribusiness trading Hub',
+    'brand': 'مركز توينز للتجارة الزراعية',
     'nav.home': 'الرئيسية', 'nav.about': 'من نحن', 'nav.products': 'المنتجات', 'nav.contact': 'تواصل معنا',
     'lang.switch': 'English',
     'hero.eyebrow': 'محاصيل مصرية طازجة ومجمدة',
